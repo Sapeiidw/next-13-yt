@@ -2,13 +2,13 @@ import TextEditor from "@/components/TextEditor";
 import TextEditorQuill from "@/components/TextEditorQuill";
 import { FC } from "react";
 
-interface pageProps {
+interface PageProps {
   params: {
     id: string;
   };
 }
 
-const page: FC<pageProps> = ({ params }) => {
+const Page: FC<PageProps> = ({ params }) => {
   if (!params.id) return <div>404</div>;
   return (
     <div className='p-5'>
@@ -18,4 +18,4 @@ const page: FC<pageProps> = ({ params }) => {
   );
 };
 
-export default page;
+export default Page;

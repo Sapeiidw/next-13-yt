@@ -10,9 +10,9 @@ import { useSession } from "next-auth/react";
 import Image from "next/image";
 import { FC } from "react";
 
-interface pageProps {}
+interface PageProps {}
 
-const page: FC<pageProps> = ({}) => {
+const Page: FC<PageProps> = ({}) => {
   const { data, isLoading, isError, error } = useQuery({
     queryKey: ["user", "profile"],
     queryFn: () =>
@@ -52,4 +52,4 @@ const page: FC<pageProps> = ({}) => {
   );
 };
 
-export default page;
+export default Page;

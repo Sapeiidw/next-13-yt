@@ -9,14 +9,16 @@ import { Copy, Link2, Plus } from "lucide-react";
 import Link from "next/link";
 import { FC } from "react";
 
-interface pageProps {}
+interface PageProps {}
 
-const page: FC<pageProps> = ({}) => {
+const Page: FC<PageProps> = ({}) => {
   const { data: documents, isLoading } = useQuery({
     queryKey: ["documents"],
     queryFn: async () =>
       await axios.get(`/api/document`).then((res) => res.data),
   });
+
+  if (isLoading) return <>Loading...</>;
 
   return (
     <div>
@@ -29,7 +31,10 @@ const page: FC<pageProps> = ({}) => {
         </div>
         {documents &&
           documents.map((document: Document) => (
-            <div className='bg-gray-200 shadow-sm rounded-lg p-5'>
+            <div
+              className='bg-gray-200 shadow-sm rounded-lg p-5'
+              key={document.id}
+            >
               <h1 className='text-3xl font-bold'>{document.name}</h1>
               <Link
                 href={`/document/${document.id}`}
@@ -46,4 +51,4 @@ const page: FC<pageProps> = ({}) => {
   );
 };
 
-export default page;
+export default Page;
