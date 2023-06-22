@@ -55,3 +55,9 @@ model VerificationToken {
 
   @@unique([identifier, token])
 }
+
+model Document {
+  id   String @id @default(cuid())
+  name String
+  data Json
+}
